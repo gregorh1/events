@@ -8,6 +8,53 @@ const AddModal = (props) => {
     hours.push(<option value={i + ':30'} key={i + 0.5}>{i}:30</option>)
   }
 
+  const datapickerOptionsStart = {
+    monthsFull: ['styczeń', 'luty', 'marzec', 'kwiecień', 'maj', 'czerwiec', 'lipiec', 'sierpień', 'wrzesień', 'październik', 'listopad', 'grudzień'],
+    monthsShort: ['sty', 'lut', 'mar', 'kwi', 'maj', 'cze', 'lip', 'sie', 'wrz', 'paź', 'lis', 'gru'],
+    weekdaysFull: ['niedziela', 'poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota'],
+    weekdaysShort: ['niedz.', 'pn.', 'wt.', 'śr.', 'cz.', 'pt.', 'sob.'],
+    weekdaysLetter: ['N', 'P', 'W', 'Ś', 'C', 'P', 'S'],
+    today: 'Dzisiaj',
+    clear: 'Usuń',
+    close: 'Zamknij',
+    firstDay: 1,
+    format: 'dd-mm-yyyy',
+    formatSubmit: 'yyyy/mm/dd',
+    hiddenPrefix: 'prefix_',
+    onSet: function (context, ooo) {
+      props.handleChange({
+        target: {
+          name: 'startDate',
+          value: context.select
+        }
+      })
+    },
+  }
+
+  const datapickerOptionsEnd = {
+    monthsFull: ['styczeń', 'luty', 'marzec', 'kwiecień', 'maj', 'czerwiec', 'lipiec', 'sierpień', 'wrzesień', 'październik', 'listopad', 'grudzień'],
+    monthsShort: ['sty', 'lut', 'mar', 'kwi', 'maj', 'cze', 'lip', 'sie', 'wrz', 'paź', 'lis', 'gru'],
+    weekdaysFull: ['niedziela', 'poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota'],
+    weekdaysShort: ['niedz.', 'pn.', 'wt.', 'śr.', 'cz.', 'pt.', 'sob.'],
+    weekdaysLetter: ['N', 'P', 'W', 'Ś', 'C', 'P', 'S'],
+    today: 'Dzisiaj',
+    clear: 'Usuń',
+    close: 'Zamknij',
+    firstDay: 1,
+    format: 'dd-mm-yyyy',
+    formatSubmit: 'yyyy/mm/dd',
+    hiddenPrefix: 'prefix_',
+    onSet: function (context, ooo) {
+      props.handleChange({
+        target: {
+          name: 'endDate',
+          value: context.select
+        }
+      })
+    },
+  }
+
+
   return (
     <div>
       <div
@@ -26,20 +73,39 @@ const AddModal = (props) => {
               <option value='Koncert'>Koncert</option>
               <option value='Gra'>Gra</option>
             </Input>
-            <Input name='startDate' s={4} label='Początek' placeholder='Wybierz datę' type='date' className='datepicker'
-              onChange={props.handleChange} value={props.addEvent.startDate} />
+
+            <Input name='startDate' id='startDate' s={4} label='Początek' placeholder='Wybierz datę' type='date' className='datepicker'
+              value={props.addEvent.startDate}
+              options={datapickerOptionsStart} />
+
             <Input name='startHour' s={2} label='' placeholder=' ' type='select' className=''
               onChange={props.handleChange} value={props.addEvent.startHour} >
               {hours}
             </Input>
-            <Input name='endDate' s={4} label='Koniec' placeholder='Wybierz datę' type='date' className='datepicker'
-              onChange={props.handleChange} value={props.addEvent.endDate} />
+            <Input name='endDate' id='endDate' s={4} label='Koniec' placeholder='Wybierz datę' type='date' className='datepicker'
+              value={props.addEvent.endDate}
+              options={datapickerOptionsEnd} />
             <Input name='endHour' s={2} label='' placeholder=' ' type='select' className=''
               onChange={props.handleChange} value={props.addEvent.endHour} >
               {hours}
             </Input>
-            <Input name='picture' s={12} list='links' label='Zdjęcie wydarzenia (link)' placeholder='Wklej link do zdjęcia lub wybierz jeden z listy... ' onChange={props.handleChange} value={props.addEvent.picture} />
+            <div className="col row s12" style={{ padding: '0', marginBottom: '0' }}>
+              <div className='card col s3' style={{
+                height: '75px',
+                padding: '0'
+              }} >
+                <img src={props.addEvent.picture} alt=''
+                  style={{
+                    objectFit: 'cover',
+                    height: '100%',
+                    width: '100%'
+                  }} />
+              </div>
+              <Input name='picture' s={9} list='links' label='Zdjęcie wydarzenia (link)' placeholder='Wklej link do zdjęcia lub wybierz jeden z listy... ' onChange={props.handleChange} value={props.addEvent.picture} />
+            </div>
+
             <datalist id='links'>
+              {/* Links from: https://www.google.pl/search?q=event&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiTioOJ19DbAhVhYJoKHarlC30Q_AUICigB&biw=1600&bih=769 */}
               <option>http://wp.sypcom.es/wp-content/uploads/2016/04/photodune-8522811-speaker-at-business-conference-and-presentation-m.jpg</option>
               <option>http://aqualandmarina.com/wp-content/uploads/sites/34/2018/05/event.jpg</option>
               <option>https://cdn.zuerich.com/sites/default/files/styles/sharing/public/web_zuerich_home_topevents_1600x900.jpg?itok=yjC-dXXH</option>
