@@ -12,7 +12,7 @@ const EventCard = (props) => {
           backgroundSize: 'contain',
           height: '162px'
         }}>
-          <img src={props.event.picture} alt=''
+          <img src={props.event.picture} alt={props.event.title}
             style={{
               objectFit: 'cover',
               height: '100%',

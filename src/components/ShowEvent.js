@@ -32,7 +32,7 @@ const ShowEvent = (props) => {
             </div>
             <div className='col s12 m5 l5 center-align'>
               <img style={{ maxWidth: '100%', width: 'auto' }}
-                src={props.event.picture} alt='' />
+                src={props.event.picture} alt={props.event.title} />
             </div>
           </div>
           <p className='flow-text'>{props.event.description}</p>

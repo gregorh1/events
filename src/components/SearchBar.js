@@ -7,7 +7,7 @@ const SearchBar = (props) => {
       <div className='row card section'
         style={{ marginTop: '23px' }}>
         <div className='input-field col s8'>
-          <i className='material-icons prefix'>search</i>
+          <span className='material-icons prefix'>search</span>
           <input type='text' id='search-bar' placeholder='szukaj Tytułu, Lokazizacji lub Organizatora'
             onChange={props.onChangeSearch} />
           <label className='active' htmlFor='search-bar'>Znajdź wydarzenie</label>

@@ -12,16 +12,12 @@ const AddModal = (props) => {
     monthsFull: ['styczeń', 'luty', 'marzec', 'kwiecień', 'maj', 'czerwiec', 'lipiec', 'sierpień', 'wrzesień', 'październik', 'listopad', 'grudzień'],
     monthsShort: ['sty', 'lut', 'mar', 'kwi', 'maj', 'cze', 'lip', 'sie', 'wrz', 'paź', 'lis', 'gru'],
     weekdaysFull: ['niedziela', 'poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota'],
-    weekdaysShort: ['niedz.', 'pn.', 'wt.', 'śr.', 'cz.', 'pt.', 'sob.'],
     weekdaysLetter: ['N', 'P', 'W', 'Ś', 'C', 'P', 'S'],
     today: 'Dzisiaj',
     clear: 'Usuń',
     close: 'Zamknij',
     firstDay: 1,
-    format: 'dd-mm-yyyy',
-    formatSubmit: 'yyyy/mm/dd',
-    hiddenPrefix: 'prefix_',
-    onSet: function (context, ooo) {
+    onSet: function (context) {
       props.handleChange({
         target: {
           name: 'startDate',
@@ -35,16 +31,12 @@ const AddModal = (props) => {
     monthsFull: ['styczeń', 'luty', 'marzec', 'kwiecień', 'maj', 'czerwiec', 'lipiec', 'sierpień', 'wrzesień', 'październik', 'listopad', 'grudzień'],
     monthsShort: ['sty', 'lut', 'mar', 'kwi', 'maj', 'cze', 'lip', 'sie', 'wrz', 'paź', 'lis', 'gru'],
     weekdaysFull: ['niedziela', 'poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota'],
-    weekdaysShort: ['niedz.', 'pn.', 'wt.', 'śr.', 'cz.', 'pt.', 'sob.'],
     weekdaysLetter: ['N', 'P', 'W', 'Ś', 'C', 'P', 'S'],
     today: 'Dzisiaj',
     clear: 'Usuń',
     close: 'Zamknij',
     firstDay: 1,
-    format: 'dd-mm-yyyy',
-    formatSubmit: 'yyyy/mm/dd',
-    hiddenPrefix: 'prefix_',
-    onSet: function (context, ooo) {
+    onSet: function (context) {
       props.handleChange({
         target: {
           name: 'endDate',
@@ -53,7 +45,6 @@ const AddModal = (props) => {
       })
     },
   }
-
 
   return (
     <div>
@@ -94,6 +85,7 @@ const AddModal = (props) => {
                 height: '75px',
                 padding: '0'
               }} >
+                {/* alt  below is empty becouse in the beginning (befor entering data) the field has no image and it snows ugly mock there */}
                 <img src={props.addEvent.picture} alt=''
                   style={{
                     objectFit: 'cover',
