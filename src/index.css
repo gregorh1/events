@@ -5,5 +5,13 @@ body {
 }
 
 .dropdown-content{
-  max-height: 200px;
+  /* max-height: 200px; */
+}
+
+.caret {
+  visibility: collapse
+}
+
+.DayPickerInput-OverlayWrapper {
+  z-index: 5;
 }

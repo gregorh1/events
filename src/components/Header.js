@@ -1,17 +1,16 @@
 import React from 'react';
-import { Navbar } from 'react-materialize'
-import NavItem from 'react-materialize/lib/NavItem';
-
 
 const Header = (props) => {
   return (
     <div>
-      <div className='navbar-fixed'>
-        <Navbar brand='&ensp; Events' right>
-          <NavItem onClick={props.openAddModal} >
-            Dodaj wydarzenie</NavItem>
-        </Navbar>
-      </div>
+      <nav>
+        <div className="nav-wrapper">
+          <span className="brand-logo left">&ensp; Events</span>
+          <ul className="right">
+            <li onClick={props.openAddEvent}><a>Dodaj wydarzenie</a></li>
+          </ul>
+        </div>
+      </nav>
     </div>
   )
 }

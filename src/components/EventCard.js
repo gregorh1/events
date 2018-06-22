@@ -4,7 +4,7 @@ const EventCard = (props) => {
   return (
     <div className='col s12 m6 l4' onClick={props.clickEvent}>
       <div className='card hoverable'
-        style={{
+        style={{ 
           minHeight: '350px'
         }}>
         <div className='card-image' style={{
@@ -18,8 +18,11 @@ const EventCard = (props) => {
               height: '100%',
               width: '100%'
             }} />
-          <span className='card-title'>
-            <div className='chip'>
+          <span className='card-title' style={{width: '100%'}} >
+            <div className='chip left'>
+              {props.daysToEvent}
+            </div>
+            <div className='chip right'>
               {props.event.cathegory}
             </div>
           </span>

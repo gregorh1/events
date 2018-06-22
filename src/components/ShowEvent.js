@@ -1,26 +1,20 @@
 import React from 'react';
-import { Icon } from 'react-materialize'
+import ConfirmModal from './ConfirmModal'
+import ModalByPortal from './ModalByPortal'
+
 
 const ShowEvent = (props) => {
+  const modal = props.modalShow ? (
+    <ModalByPortal>
+      <ConfirmModal deleteCancel={props.deleteCancel} deleteEvent={props.deleteEvent.bind(this, props.event.id)} />
+    </ModalByPortal>
+  ) : null
   return (
-    <div style={{ margin: '11px' }}>
-      <div
-        id='delete-confirm-modal'
-        className='modal'>
-        <div className='modal-content'>
-          <h5>Czy na pewno chcesz usunąć to wydarzenie?</h5>
-          <div className='divider'></div>
-          <div className='section'></div>
-          <div className='center-align'>
-            <button style={{ marginRight: '1em' }} className='btn waves-effect waves-light' onClick={props.deleteCancel}>Anuluj</button>
-            <button className='btn waves-effect waves-light red' onClick={props.deleteEvent.bind(this, props.event.id)}>Usuń</button>
-          </div>
-        </div>
-      </div>
-
+    <div id='show-event' style={{ margin: '11px' }}>
+      {modal}
       <div className='card'>
         <div className='card-action left-align'>
-          <button className='btn waves-effect waves-light' onClick={props.clickGoBack}><Icon>arrow_back</Icon></button>
+          <button className='btn waves-effect waves-light' onClick={props.clickGoBack}><span style={{lineHeight: 'unset'}} className='material-icons'>arrow_back</span></button>
         </div>
         <div className='card-content'>
           <div className='row'>
@@ -40,7 +34,7 @@ const ShowEvent = (props) => {
         <div className='card-action'>
           <div className='center-align'>
             <button style={{ marginRight: '1em' }} className='btn waves-effect waves-light' onClick={props.editEvent.bind(this, props.event)}>Edytuj</button>
-            <button className='btn waves-effect waves-light' onClick={props.deleteConfirm}>Usuń</button>
+            <button className='btn waves-effect waves-light' onClick={props.deleteConfirmOpen}>Usuń</button>
           </div>
         </div>
       </div>
