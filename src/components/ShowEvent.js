@@ -1,45 +1,51 @@
-import React from 'react';
+import React, { Component } from 'react'
 import ConfirmModal from './ConfirmModal'
 import ModalByPortal from './ModalByPortal'
+import injectSheet from 'react-jss'
+import styles from './IndexStyles'
 
 
-const ShowEvent = (props) => {
-  const modal = props.modalShow ? (
-    <ModalByPortal>
-      <ConfirmModal deleteCancel={props.deleteCancel} deleteEvent={props.deleteEvent.bind(this, props.event.id)} />
-    </ModalByPortal>
-  ) : null
-  return (
-    <div id='show-event' style={{ margin: '11px' }}>
-      {modal}
-      <div className='card'>
-        <div className='card-action left-align'>
-          <button className='btn waves-effect waves-light' onClick={props.clickGoBack}><span style={{lineHeight: 'unset'}} className='material-icons'>arrow_back</span></button>
-        </div>
-        <div className='card-content'>
-          <div className='row'>
-            <div className='col s12 m7 l7'>
-              <h4>{props.event.title}</h4>
-              <h5>{props.event.organizer}</h5>
-              <h6>{props.event.startDate} {props.event.startHour} - {props.event.endDate} {props.event.endHour}</h6>
-              <h5>{props.event.localization}</h5>
+class ShowEvent extends Component {
+
+  render() {
+    const { classes } = this.props
+    const modal = this.props.modalShow && (
+      <ModalByPortal>
+        <ConfirmModal deleteCancel={this.props.deleteCancel}
+          deleteEvent={this.props.deleteEvent.bind(this, this.props.event.id)} />
+      </ModalByPortal>
+    )
+    return (
+      <div className='container'>
+        {modal}
+        <div className='card'>
+          <article className='card-content'>
+            <div className='row'>
+              <header className='col s12 m7 l7 flow-text'>
+                <h4>{this.props.event.title}</h4>
+                <h5>{this.props.event.organizer}</h5>
+                <time><h6>{this.props.event.startDate} {this.props.event.startHour} - {this.props.event.endDate}
+                  {this.props.event.endHour}</h6></time>
+                <h5>{this.props.event.localization}</h5>
+              </header>
+              <section className='col s12 m5 l5 center-align'>
+                <img className={classes.showEventImg}
+                  src={this.props.event.picture} alt={this.props.event.title} />
+              </section>
             </div>
-            <div className='col s12 m5 l5 center-align'>
-              <img style={{ maxWidth: '100%', width: 'auto' }}
-                src={props.event.picture} alt={props.event.title} />
-            </div>
-          </div>
-          <p className='flow-text'>{props.event.description}</p>
-        </div>
-        <div className='card-action'>
-          <div className='center-align'>
-            <button style={{ marginRight: '1em' }} className='btn waves-effect waves-light' onClick={props.editEvent.bind(this, props.event)}>Edytuj</button>
-            <button className='btn waves-effect waves-light' onClick={props.deleteConfirmOpen}>Usuń</button>
-          </div>
+            <p className='flow-text'>{this.props.event.description}</p>
+          </article>
+          <footer className='card-action center-align'>
+            <button className='btn waves-effect waves-light red m-r-1em' onClick={this.props.deleteConfirmOpen}>Usuń</button>
+            <button className='btn waves-effect waves-light m-r-1em' onClick={this.props.editEvent.bind(this, this.props.event)}>Edytuj</button>
+            <button className='btn waves-effect waves-light' onClick={this.props.clickGoBack}>Wróć</button>
+          </footer>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
+
+
 }
 
-export default ShowEvent;
+export default injectSheet(styles)(ShowEvent)

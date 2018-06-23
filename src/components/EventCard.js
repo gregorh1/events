@@ -1,41 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react'
+import injectSheet from 'react-jss'
+import styles from './IndexStyles'
 
-const EventCard = (props) => {
-  return (
-    <div className='col s12 m6 l4' onClick={props.clickEvent}>
-      <div className='card hoverable'
-        style={{ 
-          minHeight: '350px'
-        }}>
-        <div className='card-image' style={{
-          background: 'url(https://cdn.evbstatic.com/s3-build/perm_001/ba7ef6/django/images/discovery/default_logos/2.png)',
-          backgroundSize: 'contain',
-          height: '162px'
-        }}>
-          <img src={props.event.picture} alt={props.event.title}
-            style={{
-              objectFit: 'cover',
-              height: '100%',
-              width: '100%'
-            }} />
-          <span className='card-title' style={{width: '100%'}} >
-            <div className='chip left'>
-              {props.daysToEvent}
-            </div>
-            <div className='chip right'>
-              {props.event.cathegory}
-            </div>
-          </span>
-        </div>
-        <div className='card-content'>
-          <h5>{props.event.title}</h5>
-          <p>{props.event.startDate}, {props.event.startHour}</p>
-          <p><b>{props.event.localization}</b></p>
-          <p><b>{props.event.organizer}</b></p>
+class EventCard extends Component {
+  render() {
+    const { classes } = this.props
+    return (
+      <div className='col s12 m6 l4' onClick={this.props.clickEvent}>
+        <div className={classes.eventCard}>
+          <div className={classes.eventCardImgContainer}>
+            <img className={classes.eventCardImg}
+              src={this.props.event.picture} alt={this.props.event.title} />
+            <span className={classes.eventCardTitle}>
+              <div className='chip left'>
+                {this.props.daysToEvent}
+              </div>
+              <div className='chip right'>
+                {this.props.event.cathegory}
+              </div>
+            </span>
+          </div>
+          <section className='card-content'>
+            <header><h5 className='center'>{this.props.event.title}</h5></header>
+            <p><time>{this.props.event.startDate}, {this.props.event.startHour}</time></p>
+            <p><b>{this.props.event.localization}</b></p>
+            <p><b>{this.props.event.organizer}</b></p>
+          </section>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
+
 }
 
-export default EventCard;
+export default injectSheet(styles)(EventCard)
