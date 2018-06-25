@@ -4,7 +4,7 @@ import styles from './IndexStyles'
 
 class EventCard extends Component {
   render() {
-    const { classes } = this.props
+    const { classes } = this.props 
     return (
       <div className='col s12 m6 l4' onClick={this.props.clickEvent}>
         <div className={classes.eventCard}>

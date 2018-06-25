@@ -45,13 +45,13 @@ export function handleChange(e) {
   this.setState({ addEvent: addEvent })
 }
 
-function hourToMiliseconds(h) {
+export function hourToMiliseconds(h) {
   const hSplit = h.split(':')
   const milis = (hSplit[0] * 60 * 60000) + (hSplit[1] * 60000)
   return milis
 }
 
-function isStartBeforEnd(addEv) {
+export function isStartBeforEnd(addEv) {
   return (addEv.startInt + hourToMiliseconds(addEv.startHour)) < (addEv.endInt + hourToMiliseconds(addEv.endHour))
 }
 
