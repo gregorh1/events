@@ -1,4 +1,4 @@
-### an example of a recruitment task that I solved
+### An example of a recruitment task that I solved
 
 To run the App just: 
 * fech repo,  
