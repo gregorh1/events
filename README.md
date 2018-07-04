@@ -6,7 +6,7 @@ To run the App just:
 * run `npm install` 
 * run `npm start`
 
-It is deployed [HERE](http://devgreg.pl/projects/events/v3/index.html)
+It is deployed [HERE](http://devgreg.pl/projects/events/v4/index.html)
 
 ### Description in Polish
 ---
